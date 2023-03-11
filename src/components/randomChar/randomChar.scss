@@ -14,7 +14,7 @@
     &__img {
         width: 180px;
         height: 180px;
-        object-fit: cover;
+        // object-fit: cover;
     }
     &__info {
         display: grid;
@@ -38,6 +38,7 @@
         }
     }
     &__static {
+        height: 100%;
         padding: 40px 35px;
         background-color: $dark;
         position: relative;
