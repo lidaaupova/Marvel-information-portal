@@ -6,7 +6,7 @@ class ErrorBoundary extends Component {
         error: false
     }
 
-    // Метод Предохрнаителя, который только обновляет state ошибки!
+    // Метод Предохранителя, который только обновляет state ошибки!
     // static getDerivedStateFromError(error) {
     //     return {error: true};
     // }
