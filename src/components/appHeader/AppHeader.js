@@ -3,6 +3,8 @@ import {Link, NavLink} from 'react-router-dom';
 import './appHeader.scss';
 
 const AppHeader = () => {
+    const isActive = ({ isActive }) => ({ color: isActive ? '#9f0013' : 'inherit' });
+
     return (
         <header className="app__header">
             <h1 className="app__title">
@@ -15,16 +17,17 @@ const AppHeader = () => {
                     <li><NavLink 
                             end 
                             to="/" 
-                            // activeStyle={{'color': '#9f0013'}}
-                            style={({isActive}) => ({'color': isActive ? '#9f0013' : 'inherit'})}
-                            >Characters</NavLink></li>
+                            style={isActive}>
+                            Characters
+                        </NavLink>
+                    </li>
                     /
-                    <li><NavLink 
-                            end 
+                    <li><NavLink
                             to="/comics" 
-                            // activeStyle={{'color': '#9f0013'}}
-                            style={({isActive}) => ({'color': isActive ? '#9f0013' : 'inherit'})}
-                            >Comics</NavLink></li>
+                            style={isActive}>
+                            Comics
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
         </header>
