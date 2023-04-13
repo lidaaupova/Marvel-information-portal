@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -50,33 +51,37 @@ const CharList = (props) => {
         const items =  arr.map((item, i) => {
             const notImage = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
             const toggleStyle = item.thumbnail === notImage ? {objectFit: 'fill'} : {objectFit: 'cover'};
-            
+
+            // const duration = 100;
+
             return (
-                <li className={`char__item`}
-                    tabIndex={0}
-                    key={item.id}
-                    ref={el => itemRefs.current[i] = el}
-                    onClick={() => {
-                        props.onCharSelected(item.id);
-                        focusOnItem(i);
-                    }}
-                    onKeyPress={(e) => {
-                        if (e.key === ' ' || e.key === "Enter") {
+                <CSSTransition timeout={Math.round(300 + Math.random() * 1000)} classNames='char__item' key={item.id}>
+                    <li className={`char__item`}
+                        tabIndex={0}
+                        key={item.id}
+                        ref={el => itemRefs.current[i] = el}
+                        onClick={() => {
                             props.onCharSelected(item.id);
                             focusOnItem(i);
-                        }
-                    }}
-                    >
-                    <img src={item.thumbnail} alt={item.name} style={toggleStyle}/>
-                    <div className="char__name">{item.name}</div>
-                </li>
+                        }}
+                        onKeyPress={(e) => {
+                            if (e.key === ' ' || e.key === "Enter") {
+                                props.onCharSelected(item.id);
+                                focusOnItem(i);
+                            }
+                        }}
+                        >
+                        <img src={item.thumbnail} alt={item.name} style={toggleStyle}/>
+                        <div className="char__name">{item.name}</div>
+                    </li>
+                </CSSTransition>
             )
         });
         // А эта конструкция вынесена для центровки спиннера/ошибки
         return (
-            <ul className="char__grid">
+            <TransitionGroup className="char__grid" component='ul'>
                 {items}
-            </ul>
+            </TransitionGroup>
         )
     }
 

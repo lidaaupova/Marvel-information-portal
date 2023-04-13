@@ -32,6 +32,17 @@
             box-shadow: 0 5px 20px $main-color;
             transform: translateY(-8px);
         }
+        &-enter {
+            opacity: 0;
+        }
+        &-enter-active {
+            opacity: 0;
+            
+        }
+        &-enter-done {
+            opacity: 1;
+            transition: opacity 500ms ease-in;
+        }
     }
     &__name {
         font-weight: bold;
