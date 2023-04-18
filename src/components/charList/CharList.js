@@ -56,7 +56,7 @@ const CharList = (props) => {
 
             return (
                 <CSSTransition timeout={Math.round(300 + Math.random() * 1000)} classNames='char__item' key={item.id}>
-                    <li className={`char__item`}
+                    <li className='char__item'
                         tabIndex={0}
                         key={item.id}
                         ref={el => itemRefs.current[i] = el}
