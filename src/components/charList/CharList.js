@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
@@ -12,16 +12,12 @@ const setContent = (process, Component, newItemLoading) => {
     switch (process) {
         case 'waiting': 
             return <Spinner/>;
-            break;
         case 'loading':
             return newItemLoading ? <Component/> : <Spinner/>;
-            break;
         case 'confirmed':
             return <Component/>
-            break;
         case 'error':
             return <ErrorMessage/>;
-            break;
         default:
             throw new Error('Unexpected process state');
     }
@@ -38,6 +34,7 @@ const CharList = (props) => {
 
     useEffect(() => {
         onRequest(offset, true);
+        // eslint-disable-next-line
     }, [])
 
     const onRequest = (offset, initial) => {
@@ -72,8 +69,6 @@ const CharList = (props) => {
             const notImage = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg";
             const toggleStyle = item.thumbnail === notImage ? {objectFit: 'fill'} : {objectFit: 'cover'};
 
-            // const duration = 100;
-
             return (
                 <CSSTransition timeout={Math.round(300 + Math.random() * 1000)} classNames='char__item' key={item.id}>
                     <li className='char__item'
@@ -97,7 +92,7 @@ const CharList = (props) => {
                 </CSSTransition>
             )
         });
-        // А эта конструкция вынесена для центровки спиннера/ошибки
+
         return (
             <TransitionGroup className="char__grid" component='ul'>
                 {items}
@@ -105,9 +100,14 @@ const CharList = (props) => {
         )
     }
 
+    const elements = useMemo(() => {
+        return setContent(processState, () => renderItems(charList), newItemLoading);
+        // eslint-disable-next-line
+    }, [processState]);
+
     return (
         <div className="char__list">
-            {setContent(processState, () => renderItems(charList), newItemLoading)}
+            {elements}
             <button 
                 className="button button__main button__long"
                 disabled={newItemLoading}
