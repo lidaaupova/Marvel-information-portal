@@ -41,3 +41,11 @@
 ### Страница с комиксами
 
 ![comics](https://github.com/lidaaupova/Marvel-information-portal/assets/71726887/3b9a53ca-66ac-46f4-9913-d2cbb12a53a2)
+
+### Страница с конкретным персонажем
+
+![character](https://github.com/lidaaupova/Marvel-information-portal/assets/71726887/8910fd7c-2e55-4250-8e5b-45d4fa9ee961)
+
+### Страница с конкретным комиксом
+
+![comic](https://github.com/lidaaupova/Marvel-information-portal/assets/71726887/e6751326-7662-464e-a391-f7410f9f3f81)
