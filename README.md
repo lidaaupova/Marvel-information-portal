@@ -34,3 +34,10 @@
 
 ## Визуальная часть
 
+### Страница с персонажами
+
+![characters](https://github.com/lidaaupova/Marvel-information-portal/assets/71726887/e309f8da-2ef5-4784-bed2-a1ec03f7f66d)
+
+### Страница с комиксами
+
+![comics](https://github.com/lidaaupova/Marvel-information-portal/assets/71726887/3b9a53ca-66ac-46f4-9913-d2cbb12a53a2)
